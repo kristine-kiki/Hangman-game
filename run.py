@@ -1,3 +1,48 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from random import randint
+
+#categories
+
+categories = {
+
+    "Flowers": ['daisy', 'daffodil', 'hibiscus', 'lavander', 'primrose',
+     'dandelion', 'calendula', 'geranium', 'petunia', 'snowdrop'],
+    "Trees": ['birch', 'oak', 'larch', 'willow', 'maple', 'chesnut tree',
+     'spruce', 'magnolia', 'cypress', 'juniper'],
+    "Birds": ['stork', 'peacock', 'hummingbird', 'pigeon', 'penguin', 
+    'woodpecker', 'swan', 'parrot', 'robin', 'blackbird']
+}
+
+hints = {
+
+    "daisy": "'He loves me, he loves me not' a familiar rhyme associated with ",
+    "daffodil": "Other name of Narcissus-one of the most popular flowers in the world, mainly due to the well-known myth of the Greek youth who fell in love with himself",
+    "hibiscus": "This flower is the floral emblem of Haiti and Malaysia",
+    "lavander": "Originally from the Latin word that means 'to wash'",
+    "primrose": "In the United Kingdom, it is against the law to pick this flower growing in the wild",
+    "dandelion": "This flower`s seeds can travel up to five kilometers from their original location",
+    "calendula": "This flower is also known as the 'flower of the rains'"
+    "geranium": "The essential oils in certain types of scented this flower help alleviate depression and stress",
+    "petunia": "This flower is related to tobacco",
+    "snowdrop": "They were named after earrings",
+    "birch": "The most common tree all over the world",
+    "oak": "These trees appeared on our planet about 65 million years ago",
+    "larch": "Wood from this tree is very valuable because it is resistant and it grows quickly",
+    "willow": "Raindrops falling from their drooping branches resemble tears",
+    "maple": "Most colourful tree in the Autumn",
+    "chesnut": "Middle Ages, this tree became a staple foodstuff in Europe, earning them the nickname 'bread of the woods'",
+    "spruce": "The Wright brothers constructed their first aircraft, the Wright Flyer, using this wood",
+    "magnolia": "In Japan, the this tree is associated with the sun goddess, Amaterasu",
+    "cypress": "This tree is extensively used for decorating gardens",
+    "juniper": "For more than 300 years, berries of this tree have been a popular flavoring agent for gin",
+    "stork": "They are symbols of good luck and prosperity",
+    "peacock": "This bird take three years to develop its tail plumage",
+    "hummingbird": "Their wings beat about 70 times per second (200 times per second when diving!)",
+    "pigeon": "This bird is renowned for its outstanding navigational abilities",
+    "penguin": "They spend nearly 50 prcent of their lives in the water and the other 50 procent on land",
+    "woodpecker": "Called as 'a doctor of the woods'",
+    "swan": "This bird mate for life",
+    "parrot": "It eats with its feet",
+    "robin": "Angry Birds-they're so territorial that they often fight to the death defending their area",
+    "blackbird": "Females usually are brown and males are in black colour"
+
+}
