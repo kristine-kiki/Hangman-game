@@ -1,8 +1,8 @@
-from random import randint
+import random
 
-#categories
+#divisions
 
-categories = {
+divisions = {
 
     "Flowers": ['daisy', 'daffodil', 'hibiscus', 'lavander', 'primrose',
      'dandelion', 'calendula', 'geranium', 'petunia', 'snowdrop'],
@@ -20,7 +20,7 @@ hints = {
     "lavander": "Originally from the Latin word that means 'to wash'",
     "primrose": "In the United Kingdom, it is against the law to pick this flower growing in the wild",
     "dandelion": "This flower`s seeds can travel up to five kilometers from their original location",
-    "calendula": "This flower is also known as the 'flower of the rains'"
+    "calendula": "This flower is also known as the 'flower of the rains'",
     "geranium": "The essential oils in certain types of scented this flower help alleviate depression and stress",
     "petunia": "This flower is related to tobacco",
     "snowdrop": "They were named after earrings",
@@ -46,3 +46,101 @@ hints = {
     "blackbird": "Females usually are brown and males are in black colour"
 
 }
+
+
+"""
+Player choosig the category to play
+"""
+def choose_division(divisions):
+    print("Please, choose your category:")
+    for idx, division in enumerate(divisions.keys(), start=1):
+        print(f"{idx}. {division}")
+
+    choice = int(input("Enter the category number: "))
+    return list (divisions.keys())[choice - 1]
+
+"""
+System randomly choosing the word from chosen division
+"""
+def choose_word(division):
+    return random.choice(divisions[division]).lower()
+
+def display_hangman(tries):
+    stages = [
+        """
+         -----
+           |   |
+           |   O
+           |  /|\\
+           |  / \\
+           |
+        """,
+        """
+           -----
+           |   |
+           |   O
+           |  /|\\
+           |  / 
+           |
+        """,
+        """
+           -----
+           |   |
+           |   O
+           |  /|\\
+           |  
+           |
+        """,
+        """
+           -----
+           |   |
+           |   O
+           |  /|
+           |  
+           |
+        """,
+        """
+           -----
+           |   |
+           |   O
+           |   |
+           |  
+           |
+        """,
+        """
+           -----
+           |   |
+           |   O
+           |   
+           |  
+           |
+        """,
+        """
+           -----
+           |   |
+           |   
+           |   
+           |  
+           |
+        """
+    ]
+    return stages[tries]
+
+def select_level():
+    print("\nPlease, select your level:")
+    print("1. Easy (12 tries)")
+    print("2. Medium (8 tries)")
+    print("3. Hard (6 tries)")
+
+
+    choice = int(input("Enter difficulty level number:"))
+    if choice == 1:
+        return 12
+    elif choice == 2:
+        return 8
+    else:
+        return 
+        
+
+
+        
