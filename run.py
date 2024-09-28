@@ -19,29 +19,40 @@ hints = {
     "lavander": "Originally from the Latin word that means 'to wash'",
     "calendula": "This flower is also known as the 'flower of the rains'",
     "petunia": "This flower is related to tobacco",
-    "primrose": "In the United Kingdom, it is against the law to pick this flower growing in the wild",
+    "primrose": "In the United Kingdom, it is against the law to pick this \
+    flower growing in the wild",
     "snowdrop": "They were named after earrings",
-    "geranium": "The essential oils in certain types of scented this flower help alleviate depression and stress",
-    "dandelion": "This flowers seeds can travel up to five kilometers from their original location",
+    "geranium": "The essential oils in certain types of scented this flower \
+    help alleviate depression and stress",
+    "dandelion": "This flowers seeds can travel up to five kilometers from \
+    their original location",
     "birch": "The most common tree all over the world",
     "oak": "These trees appeared on our planet about 65 million years ago",
-    "larch": "Wood from this tree is very valuable because it is resistant and it grows quickly",
+    "larch": "Wood from this tree is very valuable because it is \
+    resistant and it grows quickly",
     "willow": "Raindrops falling from their drooping branches resemble tears",
     "maple": "Most colourful tree in the Autumn",
-    "chesnut": "Middle Ages, this tree became a staple foodstuff in Europe, earning them the nickname 'bread of the woods'",
-    "spruce": "The Wright brothers constructed their first aircraft, the Wright Flyer, using this wood",
-    "magnolia": "In Japan, the this tree is associated with the sun goddess, Amaterasu",
+    "chesnut": "Middle Ages, this tree became a staple foodstuff in Europe,\
+    earning them the nickname 'bread of the woods'",
+    "spruce": "The Wright brothers constructed their first aircraft, \
+    the Wright Flyer, using this wood",
+    "magnolia": "In Japan, the this tree is associated with the sun \
+    goddess, Amaterasu",
     "cypress": "This tree is extensively used for decorating gardens",
-    "juniper": "For more than 300 years, berries of this tree have been a popular flavoring agent for gin",
+    "juniper": "For more than 300 years, berries of this tree have been \
+    a popular flavoring agent for gin",
     "stork": "They are symbols of good luck and prosperity",
     "peacock": "This bird take three years to develop its tail plumage",
     "hummingbird": "Their wings beat about 70 times per second(200 times per",
-    "pigeon": "This bird is renowned for its outstanding navigational abilities",
-    "penguin": "They spend nearly 50 prcent of their lives in the water and the other 50 procent on land",
+    "pigeon": "This bird is renowned for its outstanding navigational \
+    abilities",
+    "penguin": "They spend nearly 50 prcent of their lives in the water \
+    and the other 50 procent on land",
     "woodpecker": "Called as 'a doctor of the woods'",
     "swan": "This bird mate for life",
     "parrot": "It eats with its feet",
-    "robin": "Angry Birds-they're so territorial that they often fight to the death defending their area",
+    "robin": "Angry Birds-they're so territorial that they often fight \
+    to the death defending their area",
     "blackbird": "Females usually are brown and males are in black colour"
 
 }
@@ -247,7 +258,8 @@ def play_game(word, max_tries, hint):
         score += (tries * 6)  # Bonus points for remaining tries
         print(f"You guessed the word '{word}'!Your score: {score}")
     else:
-        print(f"No more guesses left!The word was '{word}'.Keep trying! Your score: {score}")
+        print(f"No more guesses left!The word was '{word}'.\
+              Keep trying! Your score: {score}")
 
 
 """
@@ -263,12 +275,12 @@ def main():
         hint = hints.get(word)  # get the hint
         play_game(word, max_tries, hint)
 
-        if input("Would you like to play again? (Y/N):").strip().upper()!= 'Y':
+        if input("Would you like to play again? (Y/N):"). \
+                strip().upper() != 'Y':
             print("Thank you for playing Hangman! Bye, bye!")
             break
 
-
-
+ 
 """
 Start the game
 """
