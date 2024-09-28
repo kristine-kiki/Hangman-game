@@ -55,25 +55,25 @@ def choose_division(divisions):
     while True:
         try:
             print("\nPlease, choose your category:")
-            for idx, division in enumerate(divisions.keys(), start=1):
+            for idx, division in enumerate(divisions.keys(), start=1): #display numbered categories
                 print(f"{idx}. {division}")
 
             choice = int(input("Enter the category number: "))
             if 1 <= choice <= len(divisions):
                 #get the key
-                return list(divisions.keys())[choice - 1] 
+                return list(divisions.keys())[choice - 1] #return chosen category
             else:
                 print("Invalid selection.Please Choose a valid category number.")
         except ValueError:
-            print("Please enter valid number.")
+            print("Please enter valid number.") #inform player of entering invalid data 
 
 """
 System randomly choosing the word from chosen division
 """
 def choose_word(division):
-    words = divisions.get(division)
+    words = divisions.get(division) 
     if words:
-        return random.choice(words).lower()
+        return random.choice(words).lower() #choose a random word and turn it to lowercase
     else:
         print(f"No words available in the division '{division}'")
         return None
@@ -141,7 +141,7 @@ def display_hangman(tries, max_tries):
         """,
          
     ]
-    return stages[max_tries - tries - 1]
+    return stages[max_tries - tries - 1] #access stages in reveresed order
 
 """
 Game logic
@@ -165,6 +165,9 @@ def play_game(word, max_tries, hint):
     print(word_completion)
     print("\n")
 
+    """
+    Game loop continues till word is guest or no tries left
+    """
     while not guessed and tries > 0:
         guess = input("Please guess a letter or word: ").lower()
 
@@ -187,11 +190,11 @@ def play_game(word, max_tries, hint):
 
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
-                    word_as_list[index] = guess
+                    word_as_list[index] = guess #update word display
                 word_completion = "".join(word_as_list)
                 score += 10
 
-                if "_" not in word_completion:
+                if "_" not in word_completion: #check if word is complete
                     guessed = True
             """
             word guess
@@ -233,7 +236,7 @@ def play_game(word, max_tries, hint):
         print(f"Sorry, you ran out of tries. The word was '{word}'. Your score: {score}")
 
 """
-function to start the game loop
+Main function to start the game loop
 """
 def main():
     max_tries = 7
