@@ -52,23 +52,35 @@ hints = {
 Player choosig the category to play
 """
 def choose_division(divisions):
-    print("Please, choose your category:")
-    for idx, division in enumerate(divisions.keys(), start=1):
-        print(f"{idx}. {division}")
+    while True:
+        try:
+            print("\nPlease, choose your category:")
+            for idx, division in enumerate(divisions.keys(), start=1):
+                print(f"{idx}. {division}")
 
-    choice = int(input("Enter the category number: "))
-    return list (divisions.keys())[choice - 1]
+            choice = int(input("Enter the category number: "))
+            if 1 <= choice <= len(divisions):
+                return list(divisions.keys())[choice - 1]
+            else:
+                print("Invalid selection.Please Choose a valid category number.")
+        except ValueError:
+            print("Please enter valid number.")
 
 """
 System randomly choosing the word from chosen division
 """
 def choose_word(division):
-    return random.choice(divisions[division]).lower()
+    words = divisions.get(division)
+    if words:
+        return random.choice(words).lower()
+    else:
+        print(f"No words available in the division '{division}'")
+        return None
 
 def display_hangman(tries):
     stages = [
         """
-         -----
+           -----
            |   |
            |   O
            |  /|\\
@@ -108,7 +120,7 @@ def display_hangman(tries):
            |
         """,
         """
-           -----
+          ------
            |   |
            |   O
            |   
@@ -122,37 +134,27 @@ def display_hangman(tries):
            |   
            |  
            |
-        """
+        """,
+         
     ]
     return stages[tries]
 
-def select_level():
-    print("\nPlease, select your level:")
-    print("1. Easy (12 tries)")
-    print("2. Medium (8 tries)")
-    print("3. Hard (6 tries)")
-
-
-    choice = int(input("Enter difficulty level number:"))
-    if choice == 1:
-        return 12
-    elif choice == 2:
-        return 8
-    else:
-        return 6
-
 def play_game(word, max_tries, hint):
+    if word is None:
+        print("No word was selected.Exiting game.")
+        return
+
     word_completion = "_" * len(word)
     guessed = False
     guessed_letters = []
     guessed_words = []
     tries = max_tries
     score = 0
-    hints = 0
+    hints_used = 0
 
-    print("Welcome to Hangman!\n")
+    print("\nWelcome to Hangman!")
     print(f"You have {tries} attempts to guess the word.")
-    print (display_hangman(tries))
+    print (display_hangman(0))
     print(word_completion)
     print("\n")
 
@@ -160,6 +162,7 @@ def play_game(word, max_tries, hint):
         guess = input("Please guess a letter or word:").lower()
 
         if len(guess) == 1 and guess.isalpha():
+
             if guess in guessed_letters:
                 print(f"You already guessed the letter '{guess}'.")
             elif guess not in word:
@@ -167,9 +170,10 @@ def play_game(word, max_tries, hint):
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print(f"Good job! '{guess}'is in the word!")
+                print(f"Good job! '{guess}' is in the word!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
+
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_as_list[index] = guess
@@ -177,7 +181,57 @@ def play_game(word, max_tries, hint):
                 score += 10
 
                 if "_" not in word_completion:
-                    guessed = True    
+                    guessed = True   
 
+        elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print (f"You already guessed the word '{guess}'.")
+            elif guess != word:
+                print(f"'{guess}' is not the word.")
+                tries -= 1
+                guessed_words.append(guess)
+            else:
+                guessed = True
+                word_completion = word
+
+                score += 20
+
+        else:
+            print("Invalid input, Please guess a single letter or the entire word.")
+
+        if tries == max_tries  // 2 and hints_used == 0:
+            use_hint = input (f"Would you like a hint? (Y/N):").strip().lower()
+            if use_hint == 'y':
+                print(f"Hint: {hint}")
+                hints_used += 1
+
+        print(display_hangman(tries))
+        print(word_completion)
+        print(f"Tries left: {tries}")
+        print("\n")
+
+
+    if guessed:
+        score += (tries * 6)
+        print(f"Congratulations! You guessed the word '{word}!Your score: {score}")
+    else:
+        print(f"Sorry, you ran out of tries.The word was '{word}'.Your score: {score}")
+
+
+def main():
+    max_tries = 7
+    while True:
+        division = choose_division(divisions)
+        word = choose_word(division)
+        hint = hints.get(word)
+        play_game(word, max_tries, hint)
+
+        if input("Do you want to play again? (Y/N):").strip().upper() != 'Y':
+            print("Thank you for playing Hangman! Goodbye!")
+            break
+
+
+if __name__ == "__main__":
+    main()
 
         
