@@ -52,5 +52,5 @@ This project was deployed using Code Institute`s mock terminal for Heroku.
 ## Credits
 Google and Wikipedia for Hangman description<br>
 Code Institute for tamplate and README.md example and Love Sandwiches project example<br>
-Udemy
+Udemy<br>
 Hanged stick figure code copied from Google
